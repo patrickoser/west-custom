@@ -1,3 +1,8 @@
+To do:
+    Move nav links to right side of header and put a lightly contrasted bar inbetween them and the theme switcher.
+
+    Add more contrast to the contact inputs to help distinguish them more from their surroundings.
+
 # Business Landing Page
 
 A modern, responsive business landing page with dark mode support and smooth animations.
