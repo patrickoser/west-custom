@@ -78,11 +78,14 @@ body {
     text-decoration: none;
     color: var(--text-color);
     margin-left: 2rem;
-    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-links a:hover {
     color: var(--primary-color);
+    background-color: var(--secondary-bg);
 }
 
 .theme-toggle {
