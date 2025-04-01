@@ -17,6 +17,7 @@
     --navbar-bg: rgba(255, 255, 255, 0.95);
     --logo-green: #2ea83a;
     --logo-orange: #ff6b1a;
+    --logo-blue: #7ac7ff;
 }
 
 [data-theme="dark"] {
@@ -30,6 +31,7 @@
     --navbar-bg: rgba(26, 26, 26, 0.95);
     --logo-green: #2ea83a;
     --logo-orange: #ff6b1a;
+    --logo-blue: #7ac7ff;
 }
 
 html {
