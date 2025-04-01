@@ -8,7 +8,7 @@
 :root {
     --bg-color: #ffffff;
     --text-color: #333;
-    --logo-blue: #7ac7ff;
+    --primary-color: #3498db;
     --primary-hover: #2980b9;
     --secondary-bg: #cecdcd;
     --third-bg: #d1d1d1;
@@ -22,7 +22,7 @@
 [data-theme="dark"] {
     --bg-color: #1a1a1a;
     --text-color: #ffffff;
-    --logo-blue: #7ac7ff;
+    --primary-color: #3498db;
     --primary-hover: #2980b9;
     --secondary-bg: #414040;
     --card-bg: #4e4e4e;
@@ -97,7 +97,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--logo-blue);
+    color: var(--primary-color);
     background-color: var(--secondary-bg);
 }
 
@@ -178,7 +178,7 @@ body {
 .cta-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background-color: var(--logo-blue);
+    background-color: var(--primary-color);
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -242,7 +242,7 @@ body {
 
 .feature i {
     font-size: 2.5rem;
-    color: var(--logo-blue);
+    color: var(--primary-color);
     margin-bottom: 1rem;
 }
 
@@ -337,7 +337,7 @@ body {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--logo-blue);
+    border-color: var(--primary-color);
 }
 
 .form-group textarea {
@@ -349,7 +349,7 @@ body {
     display: block;
     width: 100%;
     padding: 1rem;
-    background-color: var(--logo-blue);
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -365,7 +365,7 @@ body {
 /* Footer */
 footer {
     background-color: #2c3e50;
-    color: white;
+    color: var(--logo-orange);
     padding: 3rem 10% 1rem;
 }
 
@@ -381,14 +381,14 @@ footer {
 }
 
 .social-links a {
-    color: white;
+    color: var(--logo-orange);
     margin-right: 1rem;
     font-size: 1.5rem;
     transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--logo-blue);
+    color: var(--primary-color);
 }
 
 .footer-bottom {
