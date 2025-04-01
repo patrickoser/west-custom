@@ -199,6 +199,8 @@ body {
     text-align: center;
     margin-bottom: 3rem;
     color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 .about-content {
@@ -256,6 +258,8 @@ body {
     text-align: center;
     margin-bottom: 3rem;
     color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 .gallery-grid {
@@ -306,6 +310,8 @@ body {
     text-align: center;
     margin-bottom: 3rem;
     color: var(--text-color);
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 .contact-container {
