@@ -65,6 +65,25 @@ body {
     gap: 1rem;
 }
 
+.nav-links {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    padding-right: 1rem;
+    border-right: 1px solid var(--text-color);
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    margin-left: 2rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
 .theme-toggle {
     background: none;
     border: none;
@@ -78,22 +97,6 @@ body {
 
 .theme-toggle:hover {
     background-color: var(--secondary-bg);
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-color);
-    margin-left: 2rem;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
 }
 
 .hamburger {
