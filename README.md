@@ -1,7 +1,8 @@
 To do:
-    Move nav links to right side of header and put a lightly contrasted bar inbetween them and the theme switcher.
+    Setup contact form so that anyone can enter their information and it will send directly to steves email. Look up what free
+    service I used before, but it does seem like I can fairly easily set up a quick backend server to handle it if needed.
 
-    Add more contrast to the contact inputs to help distinguish them more from their surroundings.
+    when the page is in mobile mode the home section should display the logo on top of the text and button.
 
 # Business Landing Page
 
