@@ -222,12 +222,13 @@ body {
 /* Gallery section */
 .gallery {
     padding: 5rem 10%;
+    background-color: var(--bg-color);
 }
 
 .gallery h2 {
     text-align: center;
     margin-bottom: 3rem;
-    color: #2c3e50;
+    color: var(--text-color);
 }
 
 .gallery-grid {
@@ -240,13 +241,16 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px var(--shadow-color);
+    aspect-ratio: 4/3;
+    background-color: var(--secondary-bg);
 }
 
 .gallery-item img {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
+    padding: 1rem;
     transition: transform 0.3s ease;
 }
 
