@@ -11,6 +11,7 @@
     --primary-color: #3498db;
     --primary-hover: #2980b9;
     --secondary-bg: #cecdcd;
+    --third-bg: #d1d1d1;
     --card-bg: #ffffff;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --navbar-bg: rgba(255, 255, 255, 0.95);
@@ -175,7 +176,7 @@ body {
 /* About section */
 .about {
     padding: 5rem 10%;
-    background-color: var(--secondary-bg);
+    background-color: var(--third-bg);
 }
 
 .about h2 {
@@ -282,7 +283,7 @@ body {
 /* Contact section */
 .contact {
     padding: 5rem 10%;
-    background-color: var(--secondary-bg);
+    background-color: var(--third-bg);
 }
 
 .contact h2 {
