@@ -249,8 +249,8 @@ body {
 .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding: 1rem;
+    object-fit: cover;
+    padding: 0;
     transition: transform 0.3s ease;
 }
 
@@ -263,6 +263,10 @@ body {
 .gallery-item:nth-child(1):hover img,
 .gallery-item:nth-child(3):hover img {
     transform: rotate(90deg) scale(1.05);
+}
+
+.gallery-item:not(:nth-child(1)):not(:nth-child(3)):hover img {
+    transform: scale(1.05);
 }
 
 /* Contact section */
