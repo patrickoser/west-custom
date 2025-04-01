@@ -8,7 +8,7 @@
 :root {
     --bg-color: #ffffff;
     --text-color: #333;
-    --primary-color: #3498db;
+    --logo-blue: #7ac7ff;
     --primary-hover: #2980b9;
     --secondary-bg: #cecdcd;
     --third-bg: #d1d1d1;
@@ -17,13 +17,12 @@
     --navbar-bg: rgba(255, 255, 255, 0.95);
     --logo-green: #2ea83a;
     --logo-orange: #ff6b1a;
-    --logo-blue: #7ac7ff;
 }
 
 [data-theme="dark"] {
     --bg-color: #1a1a1a;
     --text-color: #ffffff;
-    --primary-color: #3498db;
+    --logo-blue: #7ac7ff;
     --primary-hover: #2980b9;
     --secondary-bg: #414040;
     --card-bg: #4e4e4e;
@@ -31,7 +30,6 @@
     --navbar-bg: rgba(26, 26, 26, 0.95);
     --logo-green: #2ea83a;
     --logo-orange: #ff6b1a;
-    --logo-blue: #7ac7ff;
 }
 
 html {
@@ -99,7 +97,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: var(--logo-blue);
     background-color: var(--secondary-bg);
 }
 
@@ -180,7 +178,7 @@ body {
 .cta-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background-color: #3498db;
+    background-color: var(--logo-blue);
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -244,7 +242,7 @@ body {
 
 .feature i {
     font-size: 2.5rem;
-    color: #3498db;
+    color: var(--logo-blue);
     margin-bottom: 1rem;
 }
 
@@ -339,7 +337,7 @@ body {
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--logo-blue);
 }
 
 .form-group textarea {
@@ -351,7 +349,7 @@ body {
     display: block;
     width: 100%;
     padding: 1rem;
-    background-color: #3498db;
+    background-color: var(--logo-blue);
     color: white;
     border: none;
     border-radius: 5px;
@@ -390,7 +388,7 @@ footer {
 }
 
 .social-links a:hover {
-    color: #3498db;
+    color: var(--logo-blue);
 }
 
 .footer-bottom {
