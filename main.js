@@ -64,14 +64,36 @@ const contactForm = document.getElementById('contact-form');
 // File upload handling
 const fileInput = document.getElementById('attachments');
 const fileList = document.querySelector('.file-list');
+const fileCounter = document.querySelector('.file-counter');
 let selectedFiles = [];
+
+const MAX_FILES = 8;
+const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
+
+// Update counter initially
+updateFileCounter();
 
 fileInput.addEventListener('change', (e) => {
     const files = Array.from(e.target.files);
+    
     files.forEach(file => {
+        // Check file size
+        if (file.size > MAX_FILE_SIZE) {
+            showMessage(`File "${file.name}" exceeds the 25MB size limit.`, 'error');
+            return;
+        }
+
+        // Check total files limit
+        if (selectedFiles.length >= MAX_FILES) {
+            showMessage(`Maximum ${MAX_FILES} files allowed.`, 'error');
+            return;
+        }
+
+        // Check for duplicate files
         if (!selectedFiles.some(f => f.name === file.name)) {
             selectedFiles.push(file);
             addFileToList(file);
+            updateFileCounter();
         }
     });
 });
@@ -86,12 +108,17 @@ function addFileToList(file) {
     const name = document.createElement('span');
     name.textContent = file.name;
     
+    const size = document.createElement('span');
+    size.className = 'file-size';
+    size.textContent = formatFileSize(file.size);
+    
     const removeBtn = document.createElement('i');
     removeBtn.className = 'fas fa-times remove-file';
     removeBtn.onclick = () => removeFile(file, fileItem);
     
     fileItem.appendChild(icon);
     fileItem.appendChild(name);
+    fileItem.appendChild(size);
     fileItem.appendChild(removeBtn);
     fileList.appendChild(fileItem);
 }
@@ -99,6 +126,7 @@ function addFileToList(file) {
 function removeFile(file, element) {
     selectedFiles = selectedFiles.filter(f => f.name !== file.name);
     element.remove();
+    updateFileCounter();
 }
 
 function getFileIcon(fileType) {
@@ -106,6 +134,26 @@ function getFileIcon(fileType) {
     if (fileType === 'application/pdf') return 'fas fa-file-pdf';
     if (fileType === 'application/illustrator' || fileType === 'application/x-illustrator') return 'fas fa-file-vector';
     return 'fas fa-file';
+}
+
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+function updateFileCounter() {
+    fileCounter.textContent = `${selectedFiles.length}/${MAX_FILES} files`;
+    
+    // Update counter color based on number of files
+    if (selectedFiles.length === MAX_FILES) {
+        fileCounter.style.color = 'var(--logo-orange)';
+    } else {
+        fileCounter.style.color = 'var(--text-color)';
+        fileCounter.style.opacity = '0.7';
+    }
 }
 
 // Update form submission to include files
