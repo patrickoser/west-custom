@@ -1,10 +1,6 @@
 To do:
-    Setup contact form so that anyone can enter their information and it will send directly to steves email. Look up what free
-    service I used before, but it does seem like I can fairly easily set up a quick backend server to handle it if needed.
-
-    When the page is in mobile mode the home section should display the logo on top of the text and button.
-
-    About and contact section bg doesnt change when theme switching.
+    Setup auto-reply through gmail so that when you get a message from the contact form it takes in their name/email 
+    and creates a custom message tailored to them asking for any attachments/files that might be relevent to their request.
 
 # Business Landing Page
 
