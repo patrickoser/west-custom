@@ -127,10 +127,11 @@ const lightboxImage = document.querySelector('.lightbox-image');
 const closeLightbox = document.querySelector('.close-lightbox');
 const prevButton = document.querySelector('.prev-image');
 const nextButton = document.querySelector('.next-image');
+const galleryImages = document.querySelectorAll('.gallery-item img');
 let currentImageIndex = 0;
 
 // Open lightbox
-galleryItems.forEach((img, index) => {
+galleryImages.forEach((img, index) => {
     img.addEventListener('click', () => {
         currentImageIndex = index;
         openLightbox(img);
@@ -147,12 +148,12 @@ lightbox.addEventListener('click', (e) => {
 
 // Navigation
 prevButton.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
     updateLightboxImage();
 });
 
 nextButton.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
     updateLightboxImage();
 });
 
@@ -163,10 +164,10 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeLightboxView();
     } else if (e.key === 'ArrowLeft') {
-        currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
         updateLightboxImage();
     } else if (e.key === 'ArrowRight') {
-        currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
         updateLightboxImage();
     }
 });
@@ -184,7 +185,7 @@ function closeLightboxView() {
 }
 
 function updateLightboxImage() {
-    const img = galleryItems[currentImageIndex];
+    const img = galleryImages[currentImageIndex];
     lightboxImage.src = img.src;
     lightboxImage.alt = img.alt;
 } 
