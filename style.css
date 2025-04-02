@@ -280,6 +280,18 @@ body {
     margin-bottom: 1rem;
 }
 
+.feature p {
+    transition: color 0.3s ease;
+}
+
+.feature:hover p {
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .feature:hover p {
+    color: var(--logo-orange);
+}
+
 /* Gallery section */
 .gallery {
     padding: 5rem 10%;
