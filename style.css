@@ -354,11 +354,16 @@ body {
     background-color: var(--card-bg);
     border-radius: 5px;
     box-shadow: 0 2px 5px var(--shadow-color);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .guidelines-container li:hover {
     transform: translateY(-3px);
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .guidelines-container li:hover {
+    color: var(--logo-orange);
 }
 
 .contact-container {
