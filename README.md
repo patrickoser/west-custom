@@ -2,7 +2,9 @@ To do:
     Setup contact form so that anyone can enter their information and it will send directly to steves email. Look up what free
     service I used before, but it does seem like I can fairly easily set up a quick backend server to handle it if needed.
 
-    when the page is in mobile mode the home section should display the logo on top of the text and button.
+    When the page is in mobile mode the home section should display the logo on top of the text and button.
+
+    About and contact section bg doesnt change when theme switching.
 
 # Business Landing Page
 
