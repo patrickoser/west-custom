@@ -2,6 +2,9 @@ To do:
     Setup auto-reply through gmail so that when you get a message from the contact form it takes in their name/email 
     and creates a custom message tailored to them asking for any attachments/files that might be relevent to their request.
 
+    See if you can set up the contact form to display a better message when a form is submitted. Right now it just shows up as 
+    a json object.
+
 # Business Landing Page
 
 A modern, responsive business landing page with dark mode support and smooth animations.
