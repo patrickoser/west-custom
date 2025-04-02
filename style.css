@@ -102,6 +102,11 @@ body {
     background-color: var(--secondary-bg);
 }
 
+[data-theme="dark"] .nav-links a:hover {
+    color: var(--logo-orange);
+    background-color: var(--secondary-bg);
+}
+
 .theme-toggle {
     background: none;
     border: none;
