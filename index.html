@@ -126,7 +126,18 @@
             </ul>
         </div>
         <div class="contact-container">
-            <form id="contact-form">
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+                <!-- Add Web3Forms access key -->
+                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                
+                <!-- Optional but recommended: Add subject and from name -->
+                <input type="hidden" name="subject" value="New Project Inquiry - West Laser Customization">
+                <input type="hidden" name="from_name" value="West Laser Customization Contact Form">
+                
+                <!-- Add spam protection -->
+                <input type="checkbox" name="botcheck" style="display: none;">
+                
+                <!-- Your existing form fields -->
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
@@ -145,7 +156,7 @@
                         <span>Attach Files (Optional)</span>
                         <span class="file-counter">0/8 files</span>
                     </label>
-                    <input type="file" id="attachments" name="attachments" multiple accept="image/*,.pdf,.ai,.eps">
+                    <input type="file" id="attachments" name="attachment" multiple accept="image/*,.pdf,.ai,.eps">
                     <div class="file-list"></div>
                 </div>
                 <button type="submit" class="submit-button">Send Message</button>

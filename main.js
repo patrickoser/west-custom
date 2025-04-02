@@ -156,22 +156,19 @@ function updateFileCounter() {
     }
 }
 
-// Update form submission to include files
+// Update form submission to use Web3Forms
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const formData = new FormData();
-    formData.append('name', document.getElementById('name').value);
-    formData.append('email', document.getElementById('email').value);
-    formData.append('message', document.getElementById('message').value);
+    const formData = new FormData(contactForm);
     
-    // Append each file to the FormData
-    selectedFiles.forEach(file => {
-        formData.append('attachments', file);
+    // Add files to FormData
+    selectedFiles.forEach((file, index) => {
+        formData.append(`attachment${index + 1}`, file);
     });
 
     try {
-        const response = await fetch('/api/contact', {
+        const response = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             body: formData
         });
@@ -183,8 +180,9 @@ contactForm.addEventListener('submit', async (e) => {
             contactForm.reset();
             selectedFiles = [];
             fileList.innerHTML = '';
+            updateFileCounter();
         } else {
-            showMessage('Failed to send message. Please try again.', 'error');
+            showMessage(`Failed to send message: ${data.message}`, 'error');
         }
     } catch (error) {
         console.error('Error:', error);
