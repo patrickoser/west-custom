@@ -24,8 +24,9 @@
     --text-color: #ffffff;
     --primary-color: #3498db;
     --primary-hover: #2980b9;
-    --secondary-bg: #414040;
-    --card-bg: #4e4e4e;
+    --secondary-bg: #2d2d2d;
+    --third-bg: #333333;
+    --card-bg: #2d2d2d;
     --shadow-color: rgba(0, 0, 0, 0.3);
     --navbar-bg: rgba(26, 26, 26, 0.95);
     --logo-green: #2ea83a;
@@ -109,11 +110,15 @@ body {
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 50%;
-    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
 }
 
-.theme-toggle:hover {
-    background-color: var(--secondary-bg);
+.theme-toggle:hover .fa-sun {
+    color: var(--logo-orange);
+}
+
+.theme-toggle:hover .fa-moon {
+    color: var(--primary-color);
 }
 
 .hamburger {
