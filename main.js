@@ -61,24 +61,86 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Form submission handling
 const contactForm = document.getElementById('contact-form');
 
+// File upload handling
+const fileInput = document.getElementById('attachments');
+const fileList = document.querySelector('.file-list');
+let selectedFiles = [];
+
+fileInput.addEventListener('change', (e) => {
+    const files = Array.from(e.target.files);
+    files.forEach(file => {
+        if (!selectedFiles.some(f => f.name === file.name)) {
+            selectedFiles.push(file);
+            addFileToList(file);
+        }
+    });
+});
+
+function addFileToList(file) {
+    const fileItem = document.createElement('div');
+    fileItem.className = 'file-item';
+    
+    const icon = document.createElement('i');
+    icon.className = getFileIcon(file.type);
+    
+    const name = document.createElement('span');
+    name.textContent = file.name;
+    
+    const removeBtn = document.createElement('i');
+    removeBtn.className = 'fas fa-times remove-file';
+    removeBtn.onclick = () => removeFile(file, fileItem);
+    
+    fileItem.appendChild(icon);
+    fileItem.appendChild(name);
+    fileItem.appendChild(removeBtn);
+    fileList.appendChild(fileItem);
+}
+
+function removeFile(file, element) {
+    selectedFiles = selectedFiles.filter(f => f.name !== file.name);
+    element.remove();
+}
+
+function getFileIcon(fileType) {
+    if (fileType.startsWith('image/')) return 'fas fa-image';
+    if (fileType === 'application/pdf') return 'fas fa-file-pdf';
+    if (fileType === 'application/illustrator' || fileType === 'application/x-illustrator') return 'fas fa-file-vector';
+    return 'fas fa-file';
+}
+
+// Update form submission to include files
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const formData = new FormData(contactForm);
-    const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message')
-    };
+    const formData = new FormData();
+    formData.append('name', document.getElementById('name').value);
+    formData.append('email', document.getElementById('email').value);
+    formData.append('message', document.getElementById('message').value);
+    
+    // Append each file to the FormData
+    selectedFiles.forEach(file => {
+        formData.append('attachments', file);
+    });
 
     try {
-        // Here you would typically send the data to your backend
-        // For now, we'll just show a success message
-        alert('Thank you for your message! We will get back to you soon.');
-        contactForm.reset();
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            showMessage('Message sent successfully!', 'success');
+            contactForm.reset();
+            selectedFiles = [];
+            fileList.innerHTML = '';
+        } else {
+            showMessage('Failed to send message. Please try again.', 'error');
+        }
     } catch (error) {
-        alert('There was an error sending your message. Please try again later.');
         console.error('Error:', error);
+        showMessage('An error occurred. Please try again later.', 'error');
     }
 });
 
