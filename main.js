@@ -119,4 +119,72 @@ galleryItems.forEach(item => {
     item.style.transform = 'translateY(20px)';
     item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     observer.observe(item);
-}); 
+});
+
+// Lightbox functionality
+const lightbox = document.getElementById('lightbox');
+const lightboxImage = document.querySelector('.lightbox-image');
+const closeLightbox = document.querySelector('.close-lightbox');
+const prevButton = document.querySelector('.prev-image');
+const nextButton = document.querySelector('.next-image');
+let currentImageIndex = 0;
+
+// Open lightbox
+galleryItems.forEach((img, index) => {
+    img.addEventListener('click', () => {
+        currentImageIndex = index;
+        openLightbox(img);
+    });
+});
+
+// Close lightbox
+closeLightbox.addEventListener('click', closeLightboxView);
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        closeLightboxView();
+    }
+});
+
+// Navigation
+prevButton.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+    updateLightboxImage();
+});
+
+nextButton.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+    updateLightboxImage();
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    
+    if (e.key === 'Escape') {
+        closeLightboxView();
+    } else if (e.key === 'ArrowLeft') {
+        currentImageIndex = (currentImageIndex - 1 + galleryItems.length) % galleryItems.length;
+        updateLightboxImage();
+    } else if (e.key === 'ArrowRight') {
+        currentImageIndex = (currentImageIndex + 1) % galleryItems.length;
+        updateLightboxImage();
+    }
+});
+
+function openLightbox(img) {
+    lightbox.classList.add('active');
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightboxView() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function updateLightboxImage() {
+    const img = galleryItems[currentImageIndex];
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
+} 
