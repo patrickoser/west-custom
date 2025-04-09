@@ -211,7 +211,7 @@ contactForm.addEventListener('submit', async (e) => {
 
         const data = await response.json();
 
-        if (response.ok) {
+        if (data.success) {
             showMessage('Thank you for your message! We will get back to you within 24-48 hours.', 'success');
             contactForm.reset();
             selectedFiles = [];
