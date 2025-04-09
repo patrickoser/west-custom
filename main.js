@@ -73,6 +73,42 @@ const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25MB in bytes
 // Update counter initially
 updateFileCounter();
 
+// Message display function
+function showMessage(message, type) {
+    // Remove any existing messages
+    const existingMessage = document.querySelector('.message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+
+    // Create message element
+    const messageElement = document.createElement('div');
+    messageElement.className = `message ${type}`;
+
+    // Add icon based on message type
+    const icon = document.createElement('i');
+    icon.className = type === 'success' 
+        ? 'fas fa-check-circle'
+        : 'fas fa-exclamation-circle';
+    messageElement.appendChild(icon);
+
+    // Add message text
+    const text = document.createElement('span');
+    text.textContent = message;
+    messageElement.appendChild(text);
+
+    // Add to document
+    document.body.appendChild(messageElement);
+
+    // Remove after 5 seconds with fade out animation
+    setTimeout(() => {
+        messageElement.style.animation = 'fadeOut 0.5s ease-out';
+        setTimeout(() => {
+            messageElement.remove();
+        }, 500);
+    }, 5000);
+}
+
 fileInput.addEventListener('change', (e) => {
     const files = Array.from(e.target.files);
     
@@ -176,7 +212,7 @@ contactForm.addEventListener('submit', async (e) => {
         const data = await response.json();
 
         if (response.ok) {
-            showMessage('Message sent successfully!', 'success');
+            showMessage('Thank you for your message! We will get back to you within 24-48 hours.', 'success');
             contactForm.reset();
             selectedFiles = [];
             fileList.innerHTML = '';
