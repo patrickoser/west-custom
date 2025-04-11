@@ -101,12 +101,20 @@ function showMessage(message, type) {
 contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Sending...';
+    
     const formData = new FormData(contactForm);
 
     try {
         const response = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(Object.fromEntries(formData))
         });
 
         const data = await response.json();
@@ -120,6 +128,9 @@ contactForm.addEventListener('submit', async (e) => {
     } catch (error) {
         console.error('Error:', error);
         showMessage('An error occurred. Please try again later.', 'error');
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Send Message';
     }
 });
 
