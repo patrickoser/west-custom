@@ -106,6 +106,15 @@ contactForm.addEventListener('submit', async (e) => {
     submitButton.textContent = 'Sending...';
     
     const formData = new FormData(contactForm);
+    const formObject = {
+        access_key: formData.get('access_key'),
+        subject: formData.get('subject'),
+        from_name: formData.get('from_name'),
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+        botcheck: false
+    };
 
     try {
         const response = await fetch('https://api.web3forms.com/submit', {
@@ -114,10 +123,11 @@ contactForm.addEventListener('submit', async (e) => {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(Object.fromEntries(formData))
+            body: JSON.stringify(formObject)
         });
 
         const data = await response.json();
+        console.log('Response:', data); // For debugging
 
         if (data.success) {
             showMessage('Thank you for your message! We will get back to you within 24-48 hours.', 'success');
